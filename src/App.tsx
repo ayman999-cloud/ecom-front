@@ -7,6 +7,10 @@ import Home from './customer/pages/home/Home';
 import Product from './customer/pages/product/Product';
 import PageDetails from './customer/pages/details/ProductDetails';
 import ProductDetails from './customer/pages/details/ProductDetails';
+import Review from './customer/pages/review/Review';
+import Cart from './customer/pages/cart/Cart';
+import Checkout from './customer/pages/checkout/Checkout';
+import Account from './customer/pages/account/Account';
 
 function App() {
   return (
@@ -16,7 +20,11 @@ function App() {
           <Navbar />
           {/*<Home />*/}
           {/*<Product />*/}
-          <ProductDetails />
+          {/*<ProductDetails />*/}
+          {/*<Review />*/}
+          {/*<Cart />*/}
+          {/*<Checkout />*/}
+          {<Account />}
         </div>
       </ThemeProvider>
     </div>

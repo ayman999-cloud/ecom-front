@@ -1,23 +1,37 @@
 import StarIcon from '@mui/icons-material/Star';
 import { teal } from '@mui/material/colors';
-import { Divider } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import {
+  Add,
+  AddShoppingCart,
+  FavoriteBorder,
   LocalShipping,
+  Remove,
   Shield,
   Wallet,
   WorkspacePremium,
 } from '@mui/icons-material';
+import { useState } from 'react';
+import SimilarProducts from './SimilarProducts';
+import ReviewCard from '../review/ReviewCard';
 
 const ProductDetails = () => {
+  const [quantity, setQuantity] = useState(1);
   return (
     <div className="px-5 lg:px-20 pt-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <section className="flex flex-col lg:flex-row gap-5">
           <div className="w-full lg:w-[15%] flex flex-wrap lg:flex-col gap-3">
-            {[1, 1, 1, 1, 1].map((item) => (
+            {[
+              'https://ae01.alicdn.com/kf/Sa1d923ede78b45ad98b2da114670f8beP.jpg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzK6ICdEn0cKzaUruOywHRwsqpDKRTXLNWWrZNOw9vwYgdkbJUZ5kBXXnsejc4HqMh8Pk&usqp=CAU',
+              'https://ae01.alicdn.com/kf/Sd5b330c7bee14ad787fe454f7ea5beb6X.jpg',
+              'https://ae01.alicdn.com/kf/S0693dd00d2f546b3bd851c2c3063bf3dE.jpg',
+              'https://ae01.alicdn.com/kf/S0693dd00d2f546b3bd851c2c3063bf3dE.jpg',
+            ].map((item) => (
               <img
                 className="lg:w-full w-[50px] cursor-pointer rounded-md"
-                src="https://cdn.shopify.com/s/files/1/0708/2334/6451/files/20250716_1326_Traditional_Moroccan_Djellaba_remix_01k09k3fchf729xahqrr51661r.png"
+                src={item}
                 alt="Morrocan style"
               />
             ))}
@@ -25,7 +39,7 @@ const ProductDetails = () => {
           <div className="w-full lg:w-[85%]">
             <img
               className="w-full rounded-md"
-              src="https://cdn.shopify.com/s/files/1/0708/2334/6451/files/20250716_1326_Traditional_Moroccan_Djellaba_remix_01k09k3fchf729xahqrr51661r.png"
+              src="https://ae-pic-a1.aliexpress-media.com/kf/Sf320f9f52559498897f95530fbbe1461t.jpg"
               alt="Morrocan style"
             />
           </div>
@@ -74,7 +88,61 @@ const ProductDetails = () => {
               <p className=""> Pay On Delivery Might Be Available</p>
             </div>
           </div>
+          <div className="mt-7 space-y-2">
+            <h1 className="">QUANTITY</h1>
+            <div className="flex items-center gap-2 w-[140px] justify-between">
+              <Button
+                disabled={quantity === 1}
+                onClick={() => setQuantity(quantity - 1)}
+              >
+                <Remove />
+              </Button>
+              <span>{quantity}</span>
+              <Button onClick={() => setQuantity(quantity + 1)}>
+                <Add />
+              </Button>
+            </div>
+          </div>
+          <div className="mt-12 flex items-center gap-5">
+            <Button
+              fullWidth
+              variant="contained"
+              startIcon={<AddShoppingCart />}
+              sx={{ py: '1rem' }}
+            >
+              Add to Bag
+            </Button>
+
+            <Button
+              fullWidth
+              variant="outlined"
+              startIcon={<FavoriteBorder />}
+              sx={{ py: '1rem' }}
+            >
+              Wishlist
+            </Button>
+          </div>
+          <div className="mt-5">
+            <p>
+              {' '}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus atque eius possimus, esse modi eaque, cum aliquid
+              dignissimos cumque id alias iste, placeat perspiciatis perferendis
+              voluptates quibusdam rerum? Delectus, quasi.
+            </p>
+          </div>
+
+          <div className="mt-12 space-y-5">
+            <ReviewCard />
+            <Divider />
+          </div>
         </section>
+      </div>
+      <div className="">
+        <h1 className="text-lg font-bold">Similar Products</h1>
+        <div className="pt-5">
+          <SimilarProducts />
+        </div>
       </div>
     </div>
   );
